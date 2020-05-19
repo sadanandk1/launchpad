@@ -12,13 +12,15 @@ export default class CreateParcel extends Component {
     this.onChangeParcelName = this.onChangeParcelName.bind(this);
     this.onChangeParcelMetric = this.onChangeParcelMetric.bind(this);
     this.onChangeParcelSize = this.onChangeParcelSize.bind(this);
+   // this.onClickNext = this.onClickNext.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     // Setting up state
     this.state = {
       name: '',
       metric: '',
-      size: ''
+      size: '',
+      page:''
     }
   }
 
@@ -36,7 +38,8 @@ export default class CreateParcel extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-
+    this.state.page +=1;
+  //  if(this.setState.page ===1){
     const parcelObject = {
       name: this.state.name,
       metric: this.state.metric,
@@ -51,6 +54,10 @@ export default class CreateParcel extends Component {
       metric: '',
       size: ''
     });
+  //}else{
+    this.props.history.push('/crop-list')
+ // }
+
   }
 
   render() {

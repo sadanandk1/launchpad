@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreateParcel from "./components/create-parcel.component";
 import EditParcel from "./components/edit-parcel.component";
 import ParcelList from "./components/parcel-list.component";
+import CropList from "./components/crop-list.component";
 
 function App() {
   return (<Router>
@@ -59,6 +60,8 @@ function App() {
                 <Route path="/create-parcel" component={CreateParcel} />
                 <Route path="/edit-parcel/:id" component={EditParcel} />
                 <Route path="/parcel-list" component={ParcelList} />
+                <Route path="/crop-list" component={CropList} />
+                
               </Switch>
             </div>
           </Col>
