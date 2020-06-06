@@ -17,6 +17,9 @@ export default class ParcelTableRow extends Component {
             }).catch((error) => {
                 console.log(error)
             })
+            console.log(this.props)
+            this.props.handle()
+        //this.props.history.push('/parcel-list');
     }
 
     render() {

@@ -8,12 +8,16 @@ export default class ParcelList extends Component {
 
   constructor(props) {
     super(props)
+    this.refresh = this.refresh.bind(this);
     this.state = {
       parcels: []
     };
   }
 
   componentDidMount() {
+    this.refresh()
+  }
+  refresh(){
     axios.get('http://localhost:4000/parcel/')
       .then(res => {
         this.setState({
@@ -27,7 +31,7 @@ export default class ParcelList extends Component {
 
   DataTable() {
     return this.state.parcels.map((res, i) => {
-      return <ParcelTableRow obj={res} key={i} />;
+      return <ParcelTableRow obj={res} key={i}  handle={this.refresh}/>;
     });
   }
 

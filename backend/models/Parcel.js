@@ -13,6 +13,12 @@ let parcelSchema = new Schema({
   }
 }, {
     collection: 'landParcel'
+  }, {
+    writeConcern: {
+      w: 'majority',
+      j: true,
+      wtimeout: 1000
+    }
   })
 
 module.exports = mongoose.model('Parcel', parcelSchema)

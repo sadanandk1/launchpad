@@ -19,7 +19,9 @@ router.route('/parcel').post((req, res, next) => {
 
 // READ Parcel
 router.route('/parcel').get((req, res) => {
-  parcelSchema.find((error, data) => {
+  let parcelSchema1 = require('../models/Parcel');
+
+  parcelSchema1.find((error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -30,7 +32,8 @@ router.route('/parcel').get((req, res) => {
 
 // Get Single Parcel
 router.route('/parcel/:id').get((req, res) => {
-  parcelSchema.findById(req.params.id, (error, data) => {
+  let parcelSchema1 = require('../models/Parcel');
+  parcelSchema1.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -42,9 +45,10 @@ router.route('/parcel/:id').get((req, res) => {
 
 // Update Parcel
 router.route('/parcel/:id').put((req, res, next) => {
-  parcelSchema.findByIdAndUpdate(req.params.id, {
+  let parcelSchema1= require('../models/Parcel');
+  parcelSchema1.findOneAndUpdate({'_id':req.params.id}, {
     $set: req.body
-  }, (error, data) => {
+  }, {upsert: true}, (error, data) => {
     if (error) {
       return next(error);
       console.log(error)
@@ -57,7 +61,8 @@ router.route('/parcel/:id').put((req, res, next) => {
 
 // Delete Parcel
 router.route('/parcel/:id').delete((req, res, next) => {
-  parcelSchema.findByIdAndRemove(req.params.id, (error, data) => {
+  let parcelSchema1 = require('../models/Parcel');
+  parcelSchema1.deleteOne({'_id':req.params.id}, (error, data) => {
     if (error) {
       return next(error);
     } else {
